@@ -1,0 +1,20 @@
+{
+	"name": "Auras Manager",
+	"type": "script",
+	"author": "1GzRDtwmxpwhCBth",
+	"img": "icons/svg/dice-target.svg",
+	"scope": "global",
+	"command": "function CoverMacro() {\n    if (!actor) {\n        ui.notifications.warn(\"Vous devez sélectionner un ou plusieurs acteurs\");\n        return;\n    }\n    coverDialog(actor).render(true);\n}\n\nfunction coverDialog(pc) {\n\n  const optsCover = [\n      {name: \"Aura du Marshall\"},\n      {name: \"Effacer Aura\"},\n  ]    \n  let coveringUp;\n\n  let content = `<p><strong>Character:</strong> ${pc.name}<br/>`;\n  content += '</p>';\n  content += '<hr/>';\n  content += '<div class=\"form-group\">';\n  content += '<p><label>Action : </label><select id=\"coverType\">';\n  for (let i = 0 ; i < optsCover.length ; i++) {\n    content += `<option value='${i}'`;\n    content += `>${optsCover[i].name}</option>`;\n  }\n  content += '</select></p>';\n  content += '</div>';\n\n  return new Dialog({\n    title: \"Auras Manager\",\n    content: content,\n    buttons: {\n      roll: {\n        icon: \"<i class='fas fa-check'></i>\",\n        label: \"Activate\",\n        callback: () => coveringUp = true,\n      },\n      cancel: {\n        icon: \"<i class='fas fa-times'></i>\",\n        label: \"Cancel\",\n        callback: () => coveringUp = false,\n      },\n    },\n    default: \"Activate\",\n    close: html => {\n        if (coveringUp) {\n            let chosenAura = optsCover[html.find('#coverType')[0].value];\n            activateAura(chosenAura.name);\n        }\n    }\n  });\n}\n\nasync function activateAura(chosenAura) {\n    let msgContent;\n    let myAuras;\n    let activatingAura = true;\n    let marshallAura = 'Compendium.pf2e.additional-effects.x4K8OS9ATLLjqxBL';\n    let allAuras = [marshallAura];\n    switch(chosenAura) {\n        case 'Effacer Aura':\n            var i;\n            for(i=0; i< allAuras.length; i++){\nwindow.alert(token.actor.data.items.filter((e) => e.type === 'effect').size)\n                let existing = token.actor.data.items.find(\n                   (e) => e.type === 'effect' && e?.data?.flags?.core?.sourceId === allAuras[i],\n                );\n                if (existing) {\n                    await token.actor.deleteEmbeddedDocuments('Item', [existing.id]);\n                }\n            }\n            msgContent = \"Desactivation des auras pour \";\n            activatingAura = false;\n            break;\n        case 'Aura du Marshall':\n            myAuras = marshallAura;\n            msgContent = \"Activation de l'effet de l'aura du Marshall pour \";\n            break;\n        default:\n    }\n\n    \n    if (activatingAura) {\n        const item = (await fromUuid(myAuras)).toObject();\n        await token.actor.createEmbeddedDocuments('Item', [item]);    \n    }\n    \n    msgContent = msgContent + actor.data.name\n\n    let chatData = {\n        user: game.user.id,\n        content: msgContent,\n        whisper: [game.user.id],\n    };\n    ChatMessage.create(chatData, {});\n}\n\n\nCoverMacro()",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"1GzRDtwmxpwhCBth": 3
+	},
+	"flags": {
+		"core": {
+			"sourceId": "Macro.mSz4NKfjVXp23tki"
+		}
+	},
+	"_id": "mSz4NKfjVXp23tki"
+}
