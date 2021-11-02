@@ -1,0 +1,15 @@
+{
+    "name": "auras-manager",
+    "title": "Auras manager",
+    "description": "Module that contains a compendium for missing aura effects in pf2e, and a macro to manage them",
+    "version": "1.0.0",
+    "minimumCoreVersion": "0.8.0",
+    "compatibleCoreVersion": "0.8.9",
+    "author": "Thiebaud S.",
+    "system": [
+        "pf2e"
+    ],
+    "url": "https://github.com/glunty/auras-manager",
+    "manifest": "https://raw.githubusercontent.com/glunty/auras-manager/master/module.json",
+    "download": "https://github.com/glunty/auras-manager/archive/master.zip"
+}
