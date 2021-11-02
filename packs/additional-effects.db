@@ -4,7 +4,7 @@
 	"img": "systems/pf2e/icons/spells/inspire-courage.webp",
 	"data": {
 		"description": {
-			"value": "<p><span id=\"ctl00_RadDrawer1_Content_MainContent_DetailedOutput\">The marshall's aura has the <a href=\"https://2e.aonprd.com/Traits.aspx?ID=60\">emotion</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=106\">mental</a>, and <a href=\"https://2e.aonprd.com/Traits.aspx?ID=163\">visual</a> traits and grants you and allies within the aura a +1 status bonus to saving throws against <a href=\"https://2e.aonprd.com/Traits.aspx?ID=68\">fear</a>.</span></p>"
+			"value": "<p><span id=\"ctl00_RadDrawer1_Content_MainContent_DetailedOutput\">The marshall's aura has the <a href=\"https://2e.aonprd.com/Traits.aspx?ID=60\\">emotion</a>, <a href=\"https://2e.aonprd.com/Traits.aspx?ID=106\\">mental</a>, and <a href=\"https://2e.aonprd.com/Traits.aspx?ID=163\\">visual</a> traits and grants you and allies within the aura a +1 status bonus to saving throws against <a href=\"https://2e.aonprd.com/Traits.aspx?ID=68\\">fear</a>.</span></p>"
 		},
 		"source": {
 			"value": ""
